@@ -8,7 +8,6 @@ from task_utils import (
 
 tasks = []
 
-
 while True:
 
     print("\n===== TASK MANAGEMENT SYSTEM =====")
