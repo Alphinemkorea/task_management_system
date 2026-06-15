@@ -8,6 +8,7 @@ from task_manager.task_utils import (
 
 tasks = []
 
+
 while True:
 
     print("\n===== TASK MANAGEMENT SYSTEM =====")
@@ -29,8 +30,11 @@ while True:
 
     elif choice == "2":
 
-        title = input("Enter task title to mark complete: ")
-        mark_task_as_complete(tasks, title)
+        task_number = int(
+            input("Enter task number to mark complete: ")
+        )
+
+        mark_task_as_complete(tasks, task_number)
 
     elif choice == "3":
 
@@ -39,7 +43,8 @@ while True:
     elif choice == "4":
 
         progress = calculate_progress(tasks)
-        print(f"Progress: {progress:.2f}% complete")
+
+        print(f"Progress: {progress:.1f}%")
 
     elif choice == "5":
 

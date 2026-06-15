@@ -21,21 +21,20 @@ def add_task(tasks, title, description, due_date):
         }
 
         tasks.append(task)
-        print("Task added successfully.")
+        print("Task added successfully!")
 
     else:
         print("Task not added.")
 
 
-def mark_task_as_complete(tasks, title):
+def mark_task_as_complete(tasks, task_number):
 
-    for task in tasks:
-        if task["title"].lower() == title.lower():
-            task["completed"] = True
-            print("Task marked as complete.")
-            return
+    if 1 <= task_number <= len(tasks):
+        tasks[task_number - 1]["completed"] = True
+        print("Task marked as complete!")
 
-    print("Task not found.")
+    else:
+        print("Invalid task number.")
 
 
 def view_pending_tasks(tasks):
@@ -43,7 +42,7 @@ def view_pending_tasks(tasks):
     pending_tasks = []
 
     for task in tasks:
-        if not task["completed"]:
+        if task["completed"] is False:
             pending_tasks.append(task)
 
     if len(pending_tasks) == 0:
@@ -52,11 +51,10 @@ def view_pending_tasks(tasks):
     else:
         print("\nPending Tasks:")
 
-        for task in pending_tasks:
-            print("-------------------")
-            print("Title:", task["title"])
-            print("Description:", task["description"])
-            print("Due Date:", task["due_date"])
+        for index, task in enumerate(pending_tasks, start=1):
+            print(f"{index}. {task['title']}")
+            print(task["description"])
+            print(task["due_date"])
 
 
 def calculate_progress(tasks):
